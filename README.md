@@ -1,2 +1,2 @@
 # egs-vue-assignment
-Demo project for ESG company
+EGS assigment Vue.js web application!
