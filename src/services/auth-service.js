@@ -8,7 +8,6 @@ class AuthService {
             password: user.password
         }).then(response => {
             if (response.data.accessToken) {
-                console.log(response.data)
                 TokenService.setUser(response.data);
             }
             return response.data;
@@ -16,10 +15,11 @@ class AuthService {
     }
 
     logout() {
-        return api.post('/v1/logout').then(() => {
-                TokenService.removeUser();
-            }
-        );
+        TokenService.removeUser();
+    }
+
+    userLogout() {
+        return api.post('/v1/logout');
     }
 
     register(user) {

@@ -62,6 +62,7 @@
 
 <script>
 import EventBus from "./common/EventBus";
+import AuthService from './services/auth-service';
 
 export default {
   computed: {
@@ -82,8 +83,10 @@ export default {
   },
   methods: {
     logout() {
-      this.$store.dispatch('auth/logout');
-      this.$router.push('/login');
+      AuthService.userLogout().finally(() => {
+        this.$store.dispatch('auth/logout');
+        this.$router.push('/login');
+      });
     }
   },
   beforeDestroy() {

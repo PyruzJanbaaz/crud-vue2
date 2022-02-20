@@ -1,6 +1,7 @@
 import axiosInstance from './api-config';
 import TokenService from "./token-service";
 import {router} from '../router';
+import Vue from 'vue';
 
 const setup = (store) => {
     axiosInstance.interceptors.request.use(
@@ -24,6 +25,7 @@ const setup = (store) => {
             if(err .toString() !== 'Error: Network Error') {
                 const originalConfig = err.config;
                 if (err.response.status === 406) {
+                    Vue.toasted.show(err.response.data.message);
                     store.dispatch('auth/logout');
                     await router.push('/login');
                 }

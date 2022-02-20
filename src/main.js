@@ -20,7 +20,7 @@ Vue.use(Toasted, {
 Vue.use(VeeValidate);
 Vue.use(Vuex);
 
-setupInterceptors(store);
+setupInterceptors(store,Toasted);
 
 new Vue({
     router,
