@@ -93,26 +93,29 @@ export default {
             this.users = response.data;
           },
           error => {
-            this.message =
-                (error.response && error.response.data && error.response.data.message) ||
-                error.message ||
-                error.toString();
+            if (error.response === undefined)
+              this.message =
+                  (error.response && error.response.data && error.response.data.message) ||
+                  error.message ||
+                  error.toString();
           }
       );
     },
     deleteUser(_user, _index) {
       this.indexClicked = _index;
       this.loading = true;
+      this.message = '';
       UserService.deleteUser(_user.id).then(
           () => {
             this.getUsers();
           },
           error => {
             this.loading = false;
-            this.message =
+            this.$toasted.show(
                 (error.response && error.response.data && error.response.data.message) ||
                 error.message ||
-                error.toString();
+                error.toString()
+            );
             if (error.response && error.response.status === 403) {
               EventBus.dispatch("logout");
             }

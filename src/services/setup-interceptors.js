@@ -21,37 +21,39 @@ const setup = (store) => {
             return res;
         },
         async (err) => {
-            const originalConfig = err.config;
-            if (err.response.status === 406) {
-                store.dispatch('auth/logout');
-                await router.push('/login');
-            }
+            if(err .toString() !== 'Error: Network Error') {
+                const originalConfig = err.config;
+                if (err.response.status === 406) {
+                    store.dispatch('auth/logout');
+                    await router.push('/login');
+                }
 
-            if (err.response.status === 401 && store.state.auth.user !== null) {
-                if (store.state.auth.user.accessToken !== null) {
-                    if (originalConfig.url !== "/v1/login" && err.response) {
-                        // Access Token was expired
-                        if (err.response.status === 401 && !originalConfig._retry) {
-                            originalConfig._retry = true;
-                            try {
-                                const rs = await axiosInstance.post("/v1/refreshToken", {
-                                    refreshToken: TokenService.getLocalRefreshToken(),
-                                });
-                                const {accessToken} = rs.data;
-                                store.dispatch('auth/refreshToken', accessToken);
-                                TokenService.updateLocalAccessToken(accessToken);
-                                return axiosInstance(originalConfig);
-                            } catch (_error) {
-                                return Promise.reject(_error);
+                if (err.response.status === 401 && store.state.auth.user !== null) {
+                    if (store.state.auth.user.accessToken !== null) {
+                        if (originalConfig.url !== "/v1/login" && err.response) {
+                            // Access Token was expired
+                            if (err.response.status === 401 && !originalConfig._retry) {
+                                originalConfig._retry = true;
+                                try {
+                                    const rs = await axiosInstance.post("/v1/refreshToken", {
+                                        refreshToken: TokenService.getLocalRefreshToken(),
+                                    });
+                                    const {accessToken} = rs.data;
+                                    store.dispatch('auth/refreshToken', accessToken);
+                                    TokenService.updateLocalAccessToken(accessToken);
+                                    return axiosInstance(originalConfig);
+                                } catch (_error) {
+                                    return Promise.reject(_error);
+                                }
                             }
                         }
+                    } else {
+                        store.dispatch('auth/logout');
+                        await router.push('/401');
                     }
-                } else {
-                    store.dispatch('auth/logout');
+                } else if (err.response.status === 401 && store.state.auth.user === null) {
                     await router.push('/401');
                 }
-            } else if (err.response.status === 401 && store.state.auth.user === null) {
-                await router.push('/401');
             }
             return Promise.reject(err);
         }

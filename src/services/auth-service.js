@@ -16,7 +16,10 @@ class AuthService {
     }
 
     logout() {
-        TokenService.removeUser();
+        return api.post('/v1/logout').then(() => {
+                TokenService.removeUser();
+            }
+        );
     }
 
     register(user) {
