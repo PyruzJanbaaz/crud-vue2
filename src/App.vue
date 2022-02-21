@@ -4,19 +4,19 @@
       <img src="./assets/images/logo.png"/>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link to="/home" class="nav-link">
+          <router-link :to="$i18nRoute({ name: 'Home' })" class="nav-link">
             <i class="ri-home-4-fill"></i>
             {{ $t('menu.home') }}
           </router-link>
         </li>
         <li v-if="showAdminPage" class="nav-item">
-          <router-link to="/admin" class="nav-link">
+          <router-link :to="$i18nRoute({ name: 'Admin' })" class="nav-link">
             <i class="ri-admin-fill"></i>
             {{ $t('menu.admin') }}
           </router-link>
         </li>
         <li class="nav-item">
-          <router-link v-if="currentUser" to="/user" class="nav-link">
+          <router-link v-if="currentUser" :to="$i18nRoute({ name: 'User' })" class="nav-link">
             <i class="ri-user-3-fill"></i>
             {{ $t('menu.user') }}
           </router-link>
@@ -26,13 +26,13 @@
 
       <ul v-if="!currentUser" class="navbar-nav ml-auto">
         <li class="nav-item">
-          <router-link to="/register" class="nav-link">
+          <router-link :to="$i18nRoute({ name: 'Register' })" class="nav-link">
             <i class="ri-user-add-fill"></i>
             {{ $t('menu.register') }}
           </router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/login" class="nav-link">
+          <router-link :to="$i18nRoute({ name: 'Login' })" class="nav-link">
             <i class="ri-login-box-fill"></i>
             {{ $t('menu.login') }}
           </router-link>
@@ -41,7 +41,7 @@
 
       <ul v-if="currentUser" class="navbar-nav ml-auto">
         <li class="nav-item">
-          <router-link to="/profile" class="nav-link">
+          <router-link :to="$i18nRoute({ name: 'Profile' })" class="nav-link">
             <i class="ri-user-2-fill"></i>
             {{ currentUser.username }}
           </router-link>
