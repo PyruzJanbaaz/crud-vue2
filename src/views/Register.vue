@@ -6,7 +6,9 @@
         <form name="form" @submit.prevent="handleRegister">
           <div v-if="!successful">
             <div class="form-group form-validate-input">
-              <label for="username">Username</label>
+              <label for="username">
+                {{$t('username')}}
+              </label>
               <input
                   v-model="user.username"
                   v-validate="'required|min:3|max:20'"
@@ -18,7 +20,9 @@
               <div v-if="submitted && errors.has('username')" class="alert-danger">{{ errors.first('username') }}</div>
             </div>
             <div class="form-group form-validate-input">
-              <label for="email">Email</label>
+              <label for="email">
+                {{$t('email')}}
+              </label>
               <input
                   v-model="user.email"
                   v-validate="'required|email|max:50'"
@@ -30,7 +34,9 @@
               <div v-if="submitted && errors.has('email')" class="alert-danger">{{ errors.first('email') }}</div>
             </div>
             <div class="form-group form-validate-input">
-              <label for="password">Password</label>
+              <label for="password">
+                {{$t('password')}}
+              </label>
               <input
                   v-model="user.password"
                   v-validate="'required|min:6|max:40'"
@@ -42,8 +48,12 @@
               <div v-if="submitted && errors.has('password')" class="alert-danger">{{ errors.first('password') }}</div>
             </div>
             <div class="form-group text-center">
-              <button class="btn btn-link m-1" @click='resetForm' type="reset">Reset</button>
-              <button class="btn btn-success">Register</button>
+              <button class="btn btn-link m-1" @click='resetForm' type="reset">
+                {{$t('btn.reset')}}
+              </button>
+              <button class="btn btn-success">
+                {{$t('btn.register')}}
+              </button>
             </div>
           </div>
         </form>

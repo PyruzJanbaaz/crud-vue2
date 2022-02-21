@@ -1,5 +1,5 @@
 <template>
-  <ErrorPage :code="404" :text="'Page not found!'"/>
+  <ErrorPage :code="404" :text="$t('pageNotFound')"/>
 </template>
 
 <script>

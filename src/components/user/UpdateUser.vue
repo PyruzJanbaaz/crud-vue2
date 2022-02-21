@@ -2,10 +2,14 @@
   <div class="row-center">
     <div class="col-md-4 col-sm-12">
       <div class="card card-container">
-        <div class="alert alert-warning">You are editing user: <span>{{ user.username }}</span></div>
+        <div class="alert alert-warning">
+
+          {{$t('you-are-editing-user')}}: <span>{{ user.username }}</span></div>
         <form name="form" @submit.prevent="handleUpdateUser">
           <div class="form-group form-validate-input">
-            <label for="firstName">FirstName</label>
+            <label for="firstName">
+              {{$t('firstName')}}
+            </label>
             <input
                 v-model="user.firstName"
                 v-validate="'required|min:3|max:20'"
@@ -17,7 +21,9 @@
             <div v-if="submitted && errors.has('firstName')" class="alert-danger">{{ errors.first('firstName') }}</div>
           </div>
           <div class="form-group form-validate-input">
-            <label for="lastName">LastName</label>
+            <label for="lastName">
+              {{$t('lastName')}}
+            </label>
             <input
                 v-model="user.lastName"
                 v-validate="'required|min:3|max:50'"
@@ -29,10 +35,14 @@
             <div v-if="submitted && errors.has('lastName')" class="alert-danger">{{ errors.first('lastName') }}</div>
           </div>
           <div class="form-group text-center">
-            <button class="btn btn-link m-1" @click='resetForm' type="reset">Reset</button>
+            <button class="btn btn-link m-1" @click='resetForm' type="reset">
+              {{$t('btn.reset')}}
+            </button>
             <button class="btn btn-warning" :disabled="loading">
               <span v-show="loading" class="spinner-border spinner-border-sm"></span>
-              <span>Update</span>
+              <span>
+                {{$t('btn.update')}}
+              </span>
             </button>
           </div>
         </form>

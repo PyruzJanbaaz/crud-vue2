@@ -5,11 +5,15 @@
         <PageTitle :title="content" :bgColor="'alert-info'"/>
         <div class="card card-container mt-1">
           <div class="card-header">
-            <h4 class="text-center">Change Password</h4>
+            <h4 class="text-center">
+              {{ $t('changePassword') }}
+            </h4>
           </div>
           <form name="form" @submit.prevent="handleChangePassword">
             <div class="form-group form-validate-input">
-              <label for="oldPassword">OldPassword</label>
+              <label for="oldPassword">
+                {{ $t('oldPassword') }}
+              </label>
               <input
                   v-model="changePass.oldPassword"
                   v-validate="'required'"
@@ -18,10 +22,13 @@
                   name="oldPassword"
                   id="oldPassword"
               />
-              <div v-if="errors.has('oldPassword')" class="alert alert-danger" role="alert">Old password is required!</div>
+              <div v-if="errors.has('oldPassword')" class="alert alert-danger" role="alert">Old password is required!
+              </div>
             </div>
             <div class="form-group form-validate-input">
-              <label for="password">NewPassword</label>
+              <label for="password">
+                {{ $t('newPassword') }}
+              </label>
               <input
                   v-model="changePass.password"
                   v-validate="'required'"
@@ -33,7 +40,9 @@
               <div v-if="errors.has('password')" class="alert alert-danger" role="alert">Password is required!</div>
             </div>
             <div class="form-group form-validate-input">
-              <label for="confirmPassword">ConfirmPassword</label>
+              <label for="confirmPassword">
+                {{ $t('confirmPassword') }}
+              </label>
               <input
                   v-model="changePass.confirmPassword"
                   v-validate="'required'"
@@ -42,13 +51,19 @@
                   name="confirmPassword"
                   id="confirmPassword"
               />
-              <div v-if="errors.has('confirmPassword')" class="alert alert-danger" role="alert">Confirm password is required!</div>
+              <div v-if="errors.has('confirmPassword')" class="alert alert-danger" role="alert">Confirm password is
+                required!
+              </div>
             </div>
             <div class="form-group text-center">
-              <button class="btn btn-link m-1" @click='resetForm' type="reset">Reset</button>
+              <button class="btn btn-link m-1" @click='resetForm' type="reset">
+                {{ $t('btn.reset') }}
+              </button>
               <button class="btn btn-warning" :disabled="loading">
                 <span v-show="loading" class="spinner-border spinner-border-sm"></span>
-                <span>Update</span>
+                <span>
+                  {{ $t('btn.update') }}
+                </span>
               </button>
             </div>
           </form>

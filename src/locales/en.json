@@ -1,0 +1,48 @@
+{
+  "menu": {
+    "en": "English",
+    "ar": "Armenian",
+    "home": "Home",
+    "admin": "Admin",
+    "user": "User",
+    "register": "Register",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "username": "Username",
+  "password": "Password",
+  "oldPassword": "Old Password",
+  "newPassword": "New Password",
+  "confirmPassword": "Confirm Password",
+  "email": "Email",
+  "changePassword" : "Change Password",
+  "authorities" : "Authorities",
+  "refreshToken" : "RefreshToken",
+  "token" : "Token",
+  "profile" : "Profile",
+  "accessDenied" : "Access Denied!",
+  "pageNotFound" : "Page not found!",
+  "you-are-editing-user" : "You are editing user ",
+  "this-is-public-page" : "This is a public page and it's accessible for all viewers! ",
+  "you-have-full-access" : "You are logged in as an ADMIN, Now you have full access permission! ",
+
+  "btn": {
+    "login": "Login",
+    "register": "Register",
+    "update": "Update",
+    "edit": "Edit",
+    "delete": "Delete",
+    "reset": "Reset"
+  },
+  "tbl": {
+    "id": "ID",
+    "firstName": "FirstName",
+    "lastName": "LastName",
+    "username": "Username",
+    "email": "Email",
+    "createDate": "Create Date",
+    "action": "Action"
+  }
+}

@@ -12,13 +12,27 @@
       <table class="table">
         <thead>
         <tr>
-          <th>ID</th>
-          <th>FirstName</th>
-          <th>LastName</th>
-          <th>Username</th>
-          <th>Email</th>
-          <th>CreateDate</th>
-          <th v-if="isAdminUser">Action</th>
+          <th>
+            {{$t('tbl.id')}}
+          </th>
+          <th>
+            {{$t('tbl.firstName')}}
+          </th>
+          <th>
+            {{$t('tbl.lastName')}}
+          </th>
+          <th>
+            {{$t('tbl.username')}}
+          </th>
+          <th>
+            {{$t('tbl.email')}}
+          </th>
+          <th>
+            {{$t('tbl.createDate')}}
+          </th>
+          <th v-if="isAdminUser">
+            {{$t('tbl.action')}}
+          </th>
         </tr>
         </thead>
         <tbody>
@@ -36,12 +50,17 @@
           <td>{{ user.email }}</td>
           <td>{{ (user.createDate).replace('T', ' ').split('.')[0] }}</td>
           <td v-if="isAdminUser">
-            <button class="btn btn-sm m-1 btn-outline-danger" @click="deleteUser(user, index)" :disabled="loading && indexClicked === index">
+            <button class="btn btn-sm m-1 btn-outline-danger" @click="deleteUser(user, index)"
+                    :disabled="loading && indexClicked === index">
               <span v-show="loading && indexClicked === index" class="spinner-border spinner-border-sm"></span>
-              <span>Delete</span>
+              <span>
+                {{ $t('btn.delete') }}
+              </span>
             </button>
             <button class="btn btn-sm m-1 btn-outline-warning" @click="editUser(user)">
-              <span>Edit</span>
+              <span>
+                {{ $t('btn.edit') }}
+              </span>
             </button>
           </td>
         </tr>

@@ -2,43 +2,44 @@
   <div id="app">
     <nav class="navbar navbar-expand border-bottom">
       <img src="./assets/images/logo.png"/>
-      <div class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <router-link to="/home" class="nav-link">
             <i class="ri-home-4-fill"></i>
-            Home
+            {{ $t('menu.home') }}
           </router-link>
         </li>
         <li v-if="showAdminPage" class="nav-item">
           <router-link to="/admin" class="nav-link">
             <i class="ri-admin-fill"></i>
-            Admin
+            {{ $t('menu.admin') }}
           </router-link>
         </li>
         <li class="nav-item">
           <router-link v-if="currentUser" to="/user" class="nav-link">
             <i class="ri-user-3-fill"></i>
-            User
+            {{ $t('menu.user') }}
           </router-link>
         </li>
-      </div>
+      </ul>
 
-      <div v-if="!currentUser" class="navbar-nav ml-auto">
+
+      <ul v-if="!currentUser" class="navbar-nav ml-auto">
         <li class="nav-item">
           <router-link to="/register" class="nav-link">
             <i class="ri-user-add-fill"></i>
-            Register
+            {{ $t('menu.register') }}
           </router-link>
         </li>
         <li class="nav-item">
           <router-link to="/login" class="nav-link">
             <i class="ri-login-box-fill"></i>
-            Login
+            {{ $t('menu.login') }}
           </router-link>
         </li>
-      </div>
+      </ul>
 
-      <div v-if="currentUser" class="navbar-nav ml-auto">
+      <ul v-if="currentUser" class="navbar-nav ml-auto">
         <li class="nav-item">
           <router-link to="/profile" class="nav-link">
             <i class="ri-user-2-fill"></i>
@@ -48,10 +49,12 @@
         <li class="nav-item">
           <a class="nav-link" href @click.prevent="logout">
             <i class="ri-logout-box-fill"></i>
-            Logout
+            {{ $t('menu.logout') }}
           </a>
         </li>
-      </div>
+      </ul>
+      <LocaleSwitcher/>
+
     </nav>
 
     <div class="container">
@@ -63,8 +66,10 @@
 <script>
 import EventBus from "./common/EventBus";
 import AuthService from './services/auth-service';
+import LocaleSwitcher from "@/components/LocaleSwitcher";
 
 export default {
+  components: {LocaleSwitcher},
   computed: {
     currentUser() {
       return this.$store.state.auth.user;

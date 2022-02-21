@@ -102,3 +102,12 @@ label {
     font-size: 5rem;
     font-weight: bold;
 }
+
+.lang-link{
+    color: #34485d;
+    cursor: pointer;
+}
+
+.lang-link[selected]{
+    color: #41b883;
+}

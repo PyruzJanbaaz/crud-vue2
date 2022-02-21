@@ -5,7 +5,9 @@
         <img class="card-logo" src="../assets/images/logo.png"/>
         <form name="form" @submit.prevent="handleLogin">
           <div class="form-group form-validate-input">
-            <label for="username">Username</label>
+            <label for="username">
+              {{$t('username')}}
+            </label>
             <input
                 v-model="user.username"
                 v-validate="'required'"
@@ -17,7 +19,9 @@
             <div v-if="errors.has('username')" class="alert alert-danger" role="alert">Username is required!</div>
           </div>
           <div class="form-group form-validate-input">
-            <label for="password">Password</label>
+            <label for="password">
+              {{$t('password')}}
+            </label>
             <input
                 v-model="user.password"
                 v-validate="'required'"
@@ -29,10 +33,14 @@
             <div v-if="errors.has('password')" class="alert alert-danger" role="alert">Password is required!</div>
           </div>
           <div class="form-group text-center">
-            <button class="btn btn-link m-1" @click='resetForm' type="reset">Reset</button>
+            <button class="btn btn-link m-1" @click='resetForm' type="reset">
+              {{$t('btn.reset')}}
+            </button>
             <button class="btn btn-success" :disabled="loading">
               <span v-show="loading" class="spinner-border spinner-border-sm"></span>
-              <span>Login</span>
+              <span>
+                {{$t('btn.login')}}
+              </span>
             </button>
           </div>
           <div class="form-group">

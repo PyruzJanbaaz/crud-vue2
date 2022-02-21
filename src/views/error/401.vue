@@ -1,5 +1,5 @@
 <template>
-  <ErrorPage :code="401" :text="'Access Denied!'"/>
+  <ErrorPage :code="401" :text="$t('accessDenied')"/>
 </template>
 
 <script>
