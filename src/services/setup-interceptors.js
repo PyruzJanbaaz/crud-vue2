@@ -1,7 +1,8 @@
 import axiosInstance from './api-config';
 import TokenService from "./token-service";
-import {router} from '../router';
+import router from '../router';
 import Vue from 'vue';
+import {i18n} from "../i18n";
 
 const setup = (store) => {
     axiosInstance.interceptors.request.use(
@@ -22,12 +23,12 @@ const setup = (store) => {
             return res;
         },
         async (err) => {
-            if(err .toString() !== 'Error: Network Error') {
+            if (err.toString() !== 'Error: Network Error') {
                 const originalConfig = err.config;
                 if (err.response.status === 406) {
                     Vue.toasted.show(err.response.data.message);
                     store.dispatch('auth/logout');
-                    await router.push('/login');
+                    await router.push('/' + i18n.locale + '/login');
                 }
 
                 if (err.response.status === 401 && store.state.auth.user !== null) {
@@ -51,10 +52,10 @@ const setup = (store) => {
                         }
                     } else {
                         store.dispatch('auth/logout');
-                        await router.push('/401');
+                        await router.push('/' + i18n.locale +'/401');
                     }
                 } else if (err.response.status === 401 && store.state.auth.user === null) {
-                    await router.push('/401');
+                    await router.push('/' + i18n.locale +'/401');
                 }
             }
             return Promise.reject(err);

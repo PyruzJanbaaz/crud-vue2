@@ -32,22 +32,22 @@ const routes = [{
             component: load('Login')
         },
         {
-            path: '/register',
+            path: 'register',
             name: 'Register',
             component: load('Register')
         },
         {
-            path: '/profile',
+            path: 'profile',
             name: 'Profile',
-            component: () => import('./views/Profile.vue')
+            component: load('Profile')
         },
         {
-            path: '/admin',
+            path: 'admin',
             name: 'Admin',
             component: load('AdminPage')
         },
         {
-            path: '/user',
+            path: 'user',
             name: 'User',
             component: load('UserPage')
         },
@@ -57,7 +57,7 @@ const routes = [{
             component: load('404')
         },
         {
-            path: '/401',
+            path: '401',
             name: 'Access Denied',
             component: load('401')
         }

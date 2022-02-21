@@ -54,6 +54,7 @@
 
 <script>
 import NewUser from '../models/new-user';
+import { i18n } from '../i18n';
 
 export default {
   name: 'Login',
@@ -92,7 +93,7 @@ export default {
         if (this.user.username && this.user.password) {
           this.$store.dispatch('auth/login', this.user).then(
               () => {
-                this.$router.push('/profile');
+                this.$router.push('/'+i18n.locale + '/profile');
               },
               error => {
                 this.loading = false;
