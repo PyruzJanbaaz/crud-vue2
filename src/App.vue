@@ -67,6 +67,7 @@
 import EventBus from "./common/EventBus";
 import AuthService from './services/auth-service';
 import LocaleSwitcher from "@/components/LocaleSwitcher";
+import { i18n } from './i18n';
 
 export default {
   components: {LocaleSwitcher},
@@ -90,7 +91,7 @@ export default {
     logout() {
       AuthService.userLogout().finally(() => {
         this.$store.dispatch('auth/logout');
-        this.$router.push('/login');
+        this.$router.push('/'+i18n.locale +'/login');
       });
     }
   },
