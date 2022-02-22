@@ -16,7 +16,7 @@ import { Trans } from './plugins/Translation';
 Vue.prototype.$i18nRoute = Trans.i18nRoute.bind(Trans)
 Vue.config.productionTip = false;
 Vue.use(Toasted, {
-    duration: 3000,
+    duration: 5000,
     position: 'top-center',
     iconPack: 'material'
 });

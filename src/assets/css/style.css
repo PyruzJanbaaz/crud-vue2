@@ -109,14 +109,20 @@ ul.flags {
 }
 
 .lang-link {
+    opacity: 0.4;
+    cursor: pointer;
     list-style: none;
     display: inline-block;
     margin: 0.2rem;
 }
 
+.lang-link[selected] {
+    opacity: 1;
+    cursor: default;
+}
+
 .lang-link img {
     color: #34485d;
-    cursor: pointer;
     width: 24px;
 }
 
