@@ -2,7 +2,7 @@
   <div>
     <ul class="flags">
       <li class="lang-link" v-for="locale in supportedLocales" :key="locale" @click="switchLocale(locale)">
-        <img :src="require(`@/assets/images/${locale}.png`)">
+        <img :src="require(`@/assets/images/${locale}.png`)" :alt="locale">
       </li>
     </ul>
   </div>
