@@ -16,7 +16,7 @@
                 name="username"
                 id="username"
             />
-            <div v-if="errors.has('username')" class="alert alert-danger" role="alert">Username is required!</div>
+            <div v-if="errors.has('username')" class="alert alert-danger" role="alert">{{$t('username-is-required')}}</div>
           </div>
           <div class="form-group form-validate-input">
             <label for="password">
@@ -30,7 +30,7 @@
                 name="password"
                 id="password"
             />
-            <div v-if="errors.has('password')" class="alert alert-danger" role="alert">Password is required!</div>
+            <div v-if="errors.has('password')" class="alert alert-danger" role="alert">{{$t('password-is-required')}}</div>
           </div>
           <div class="form-group text-center">
             <button class="btn btn-link m-1" @click='resetForm' type="reset">

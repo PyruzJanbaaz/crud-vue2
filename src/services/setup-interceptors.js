@@ -23,8 +23,15 @@ const setup = (store) => {
             return res;
         },
         async (err) => {
+
             if (err.toString() !== 'Error: Network Error') {
                 const originalConfig = err.config;
+                console.log(err.response)
+                if (originalConfig.data !== undefined) {
+                    Vue.toasted.show(originalConfig.data.message);
+                }else{
+                    Vue.toasted.show(err.response.data.error);
+                }
                 if (err.response.status === 406) {
                     Vue.toasted.show(err.response.data.message);
                     store.dispatch('auth/logout');
@@ -52,10 +59,10 @@ const setup = (store) => {
                         }
                     } else {
                         store.dispatch('auth/logout');
-                        await router.push('/' + i18n.locale +'/401');
+                        await router.push('/' + i18n.locale + '/401');
                     }
                 } else if (err.response.status === 401 && store.state.auth.user === null) {
-                    await router.push('/' + i18n.locale +'/401');
+                    await router.push('/' + i18n.locale + '/401');
                 }
             }
             return Promise.reject(err);

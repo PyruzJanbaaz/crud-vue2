@@ -27,6 +27,8 @@
   "you-are-editing-user" : "You are editing user ",
   "this-is-public-page" : "This is a public page and it's accessible for all viewers! ",
   "you-have-full-access" : "You are logged in as an ADMIN, Now you have full access permission! ",
+  "password-is-required" : "Password is required! ",
+  "username-is-required" : "Username is required!",
 
   "btn": {
     "login": "Login",
