@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav class="navbar navbar-expand border-bottom">
-      <img src="./assets/images/logo.png"/>
+      <img class="logo" src="./assets/images/logo.png"/>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <router-link :to="$i18nRoute({ name: 'Home' })" class="nav-link">

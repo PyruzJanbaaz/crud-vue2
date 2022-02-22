@@ -29,7 +29,7 @@ label {
     border-radius: 50%;
 }
 
-.navbar img {
+.navbar img.logo {
     max-height: 3rem;
     background: #fff;
     border-radius: 5rem;
@@ -103,11 +103,20 @@ label {
     font-weight: bold;
 }
 
-.lang-link{
-    color: #34485d;
-    cursor: pointer;
+ul.flags {
+    margin:0;
+    padding: 0;
 }
 
-.lang-link[selected]{
-    color: #41b883;
+.lang-link {
+    list-style: none;
+    display: inline-block;
+    margin: 0.2rem;
 }
+
+.lang-link img {
+    color: #34485d;
+    cursor: pointer;
+    width: 24px;
+}
+
