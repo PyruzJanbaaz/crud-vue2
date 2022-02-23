@@ -6,7 +6,7 @@ const defaultImpl = VueI18n.prototype.getChoiceIndex
 
 VueI18n.prototype.getChoiceIndex = function(choice, choicesLength) {
   // this === VueI18n instance, so the locale property also exists here
-  if (this.locale !== 'ru') {
+  if (this.locale !== 'ar') {
     // proceed to the default implementation
     return defaultImpl.apply(this, arguments)
   }
@@ -39,7 +39,7 @@ const dateTimeFormats = {
       day: 'numeric'
     }
   },
-  'ru': {
+  'ar': {
     short: {
       year: 'numeric',
       month: 'short',
